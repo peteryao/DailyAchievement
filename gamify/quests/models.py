@@ -17,5 +17,3 @@ class CompleteQuest(models.Model):
     user = models.ForeignKey(User)
     quest = models.ForeignKey(Quest)
     completed = models.DateTimeField(auto_now_add=True)
-
-
