@@ -3,10 +3,7 @@
 {% block content %}
 <div class="row-fluid">
     {% for quest in quest %}
-        {% if forloop.first %}
-        <div class="row">
-        {% endif %}
-        {% if forloop.counter|divisibleby:"3" %}
+        {% if forloop.counter0|divisibleby:"3" %}
         <div class="row">
         {% endif %}
             <div class="span4">
