@@ -1,31 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row-fluid">
+    {% for group, count in all_groups %}
+        {% if forloop.counter0|divisibleby:"3" %}
+        <div class="row" style="position:relative">
+        {% endif %}
+            <div class="span4 well">
+                <center>
+                    <strong>{{group.name}}<br /></strong> ({{count}}<i> people</i>)
+                </center>
+                <center>
+                    <a href="/quests/group/{{group.id}}/"><img src="{{group.avatar}}" style="height: 300px;" ></img></a>
+                </center><br />
+                <div class="row">
+                    <center>
+                        <a href="/quests/group/{{group.group.id}}/"><button class="btn btn-success" {% if quest.id in user_quests %}disabled{% endif %}>Join</button></a>
+                        {# <button class="btn btn-danger">Decline</button> #}
+                    </center>
+                </div><br><br>
+                <p>
+                {{group.description}}
+                </p>
+            </div>  
+{% if forloop.counter == all_groups|length %}
+ <div class="span4 well">
+    Looking for something not on this list? Make you own group and invite your friends!
 
-<table class="table table-striped ">
-    <thead>
-        <tr>
-            <th>Group</th>
-            <th></th>
-            <th>Description</th>
-            <th>Members</th>
-            <th>Join</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for group, count in all_groups %}
-        <tr>
-            <td><img src="{{group.avatar}}" style="height:80px;width:80px"></img></td>
-            <td>{{group.name}}</td>
-            <td>{{group.description}}</td>
-            <td>{{count}}</td>
-            <td><a href="/quests/group/{{group.group.id}}"> <button class="btn btn-success">Join</button></a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-Looking for something not on this list? Make you own group and invite your friends!
 <form action="/quests/group/add_group/" method="POST">
     {% csrf_token %}
 <div class="control-group">
@@ -46,6 +47,20 @@ Looking for something not on this list? Make you own group and invite your frien
       <input id="inputPicture" name="inputPicture" placeholder="Picture">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Make New Team</button> 
+  <center><button type="submit" class="btn btn-primary">Make New Team</button> </center>
 </form>
+</div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:"3" %}
+
+        </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+</div>
+
+
+
 {% endblock %}
