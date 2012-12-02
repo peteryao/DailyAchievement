@@ -78,9 +78,12 @@ def group(request, group_id):
         "average_points": average_points,
         }, context_instance=RequestContext(request))
 
+
 def leaderboard(request):
     board = UserAdditions.objects.order_by('-points')[0:20]
+    quests = Quest.objects.all()[0:5]
 
     return render_to_response('leaderboard.html', {
         "board": board,
+        "quests": quests,
         }, context_instance=RequestContext(request))
