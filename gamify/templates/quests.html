@@ -3,21 +3,30 @@
 {% block content %}
 <div class="row-fluid">
     {% for quest in quest %}
-    {% if forloop.counter|divisibleby:"3" %}
-    <div class="row">
-    {% endif %}
-    <div class="span4">
-    <center><strong>{{quest.title}}</strong> ({{quest.point_value}}<i> pts</i>)</center><br />
-    <center><img src="{{quest.image}}" style="height: 300px;" ></img></center><br />
-    <p>{{quest.description}}</p>
-    <div><center>
-    <button class="btn btn-success">Accept</button>
-    <button class="btn btn-danger">Decline</button>
-    </center></div>
-    </div>  
-    {% if forloop.counter|divisibleby:"3" %}
-    </div>
-    {% endif %}
+        {% if forloop.first %}
+        <div class="row">
+        {% endif %}
+        {% if forloop.counter|divisibleby:"3" %}
+        <div class="row">
+        {% endif %}
+            <div class="span4">
+                <center>
+                    <strong>{{quest.title}}</strong> ({{quest.point_value}}<i> pts)</i>
+                </center><br />
+                <center>
+                    <img src="{{quest.image}}" style="height: 300px;" ></img>
+                </center><br />
+                <p>{{quest.description}}</p>
+                <div>
+                    <center>
+                        <button class="btn btn-success">Accept</button>
+                        <button class="btn btn-danger">Decline</button>
+                    </center>
+                </div>
+            </div>  
+        {% if forloop.counter|divisibleby:"3" %}
+        </div>
+        {% endif %}
     {% endfor %}
 </div>
 
