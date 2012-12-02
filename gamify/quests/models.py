@@ -42,3 +42,20 @@ class UserAdditions(models.Model):
 class Rank(models.Model):
     name = models.CharField(max_length=200)
     experience_required = models.FloatField()
+
+
+class Flair(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.CharField()
+
+
+class Achievement(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.CharField()
+    requirements = models.CharField()
+
+
+class Trophy(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.CharField()
+    achievement = models.ForeignKey(Achievement)

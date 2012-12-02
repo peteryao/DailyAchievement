@@ -14,9 +14,12 @@ def index(request):
 def profile(request, user_id):
     user = User.objects.get(pk=user_id)
     interests = UserInterests.objects.get(user_id=user_id)
+    complete_quests = CompleteQuest.objects.get(user_id=user_id)
+    
 
 
     return render_to_response('profile.html', {
         "current_user": user,
         "user_interests": interests,
+        "complete_quests": complete_quests,
         }, context_instance=RequestContext(request))
