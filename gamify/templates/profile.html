@@ -6,13 +6,24 @@
     <div class="row-fluid">
         <div class="span3">
             <img class="img-rounded" src="http://placehold.it/140x140"><br />
-            {{current_user.first_name}} {{current_user.last_name}}
+            {{current_user.first_name}} {{current_user.last_name}} | <img src="{{additions.flair.image}}" width="100"></img> <br />
+            {{additions.points}} <i>pts</i>
         </div>
         <div class="span9">
+            <div class="progress">
+                <div class="bar" style="width: {% widthratio additions.exp 100 100 %}%;">Level 7</div>
+            </div>
             {% for quest in complete_quests %}
             <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} (<i>{{quest.quest.point_value}}</i>)<br />
             {% endfor %}
         </div>
+    </div>
+    <div class="row-fluid">
+        <h4>Trophy Case</h4>
+        {% for trophy in trophy %}
+            {{trophy.trophy.name}} {{trophy.trophy.achievement.name}} <br />
+            <img src="{{trophy.trophy.image}}" width="100"></img> 
+        {% endfor %}
     </div>
 </div>
 

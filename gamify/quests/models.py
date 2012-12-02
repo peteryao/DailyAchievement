@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 # Create your models here.
 
 
@@ -40,6 +41,7 @@ class UserInterests(models.Model):
 class UserAdditions(models.Model):
     user = models.OneToOneField(User)
     exp = models.FloatField()
+    points = models.FloatField()
     occupation = models.CharField(max_length=200)
     avatar = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
@@ -72,3 +74,10 @@ class Trophy(models.Model):
 class UserTrophy(models.Model):
     user = models.ForeignKey(User)
     trophy = models.ForeignKey(Trophy)
+
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserAdditions.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)

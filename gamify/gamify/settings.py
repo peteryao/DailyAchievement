@@ -10,6 +10,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+AUTH_PROFILE_MODULE = 'quests.UserAdditions'
 
 DATABASES = {
     'default': {
