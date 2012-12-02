@@ -262,6 +262,15 @@ def finish_quest(request, quest_id):
     additions.save()
     return HttpResponseRedirect('/quests/user/current')
 
+def join_group(request, group_id):
+    user = request.user
+    group = Group.objects.get(pk=group_id)
+
+    data = UserGroup(user_id=user.id, group_id=group.id)
+    data.save()
+
+    return HttpResponseRedirect('/quests/group/' + group_id + '/')
+
 
 def cancel_quest(request, quest_id):
     quest = Quest.objects.get(pk=quest_id)

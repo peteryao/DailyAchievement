@@ -24,6 +24,7 @@ urlpatterns += patterns('quests.views',
     url(r'^user/quest/accept/(?P<quest_id>\d+)/$', 'add_quest'),
     url(r'^user/quest/finish/(?P<quest_id>\d+)/$', 'finish_quest'),
     url(r'^user/quest/cancel/(?P<quest_id>\d+)/$', 'cancel_quest'),
+    url(r'^user/group/join/(?P<group_id>\d+)/$', 'join_group'),
 
     )
 
