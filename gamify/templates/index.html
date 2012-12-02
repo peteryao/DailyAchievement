@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
+    <title>QuestADay</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,6 +11,7 @@
     <!-- Le styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Merienda:700' rel='stylesheet' type='text/css'>
     <style>
 
     /* GLOBAL STYLES
@@ -31,7 +32,6 @@
     .navbar-wrapper {
       position: relative;
       z-index: 10;
-      margin-top: 20px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
 
@@ -103,6 +103,7 @@
     }
     .carousel-caption h1,
     .carousel-caption .lead {
+      font-family:"Merienda";
       margin: 0;
       line-height: 1.25;
       color: #fff;
@@ -180,7 +181,7 @@
         height: 500px;
       }
       .carousel img {
-        width: auto;
+      width: auto;
         height: 500px;
       }
 
@@ -275,7 +276,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Select A Quest</a>
           <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
           <div class="nav-collapse collapse">
             <ul class="nav">
@@ -308,37 +309,50 @@
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
-        <div class="item active">
-          <img src="{{ STATIC_URL }}img/slide-01.jpg" alt="">
+        <div class="active item">
+          <img src="http://i.imgur.com/mIaD1.jpg" alt="">
           <div class="container">
-            <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <div class="carousel-caption" style="padding-top:px">
+              <h1 style="color:#5a22cb">Select A Quest: <br>                      
+                  Become the person you want to be, one step at a time.<br></h1>
+                  
+
+              <p class="lead" style="color:#b7faf0"> A Real World RPG.<br><br>
+
+                <p class="lead" style="color:">
+                Get Motivated.
+                Real Goals.
+                Real Rewards.
+                
+                
+              </p>
               <!-- <a class="btn btn-large btn-primary" href="#">Sign up today</a> -->
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="{{ STATIC_URL }}img/slide-02.jpg" alt="">
+          <img src="http://i.imgur.com/NeYI5.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1 style="color:#000">Replacing the impossible with the possible.</h1><br><br><br><br><br>
+              <p class="lead"> Whether you're a jack-of-all-trades or just an average joe trying to learn some skills, Select A Quest can help you achieve victory. </p>
               <!-- <a class="btn btn-large btn-primary" href="#">Learn more</a> -->
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="{{ STATIC_URL }}img/slide-03.jpg" alt="">
+          <img src="http://i.imgur.com/5GhXO.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1 style="color:#5a22cb">An achievement a day, exceed your own expectations~</h1> <br><br><br>
+              <p class="lead" style="color:#b7faf0">There’s a dreamer inside all of us. Whether or not you’re dreaming of learning a new language, losing ten pounds, or just dreaming of a new, creative way to compete with friends, Select A Quest can help you grasp your dreams. </p>
               <!-- <a class="btn btn-large btn-primary" href="#">Browse gallery</a> -->
             </div>
           </div>
         </div>
       </div>
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
      </div><!-- /.carousel -->
 
 
@@ -352,23 +366,38 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="span4">
-          <img class="img-circle" src="http://placehold.it/140x140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="http://i.imgur.com/9zub2.jpg" src="http://i.imgur.com/9zub2.jpg/140x140">
+          <h2>Competition</h2>
+          <p>Compete with others as you collectively attempt to make our leaderboards. The top 20 questers will be publicly showcased on the leaderboard. Show everyone who’s boss. (Hint: It’s you.)</p>
         </div><!-- /.span4 -->
         <div class="span4">
-          <img class="img-circle" src="http://placehold.it/140x140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="http://i.imgur.com/VulHA.jpg" src="http://i.imgur.com/VulHA.jpg/140x140">
+          <h2>Knowledge</h2>
+          <p> Incentive to finally finish your damn essay. Or learn the language you’ve always been meaning to. Or learn how to flambe to impress that date that you have next week, custom quests will give you that extra push that you need to finally start checking off that to-do list. </p>
         </div><!-- /.span4 -->
         <div class="span4">
-          <img class="img-circle" src="http://placehold.it/140x140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="http://i.imgur.com/GNilq.jpg" src="http://i.imgur.com/GNilq.jpg/140x140">
+          <h2>Fun</h2>
+          <p> Invite your friends and compete with them head-to-head. Set quests for you and your friends to complete together. See who can be the first to complete a 3K, lose 15 pounds, or learn that really awesome song on the guitar that you keep meaning to do.  </p>
+
         </div><!-- /.span4 -->
+      </div><!-- /.row -->
+<br><br>
+      <div class="row">
+        <div class="span4 offset2">
+          <img class="http://i.imgur.com/GB0w9.jpg" src="http://i.imgur.com/GB0w9.jpg/350x360">
+          <h2>Tracking</h2>
+          <p> We all know how forgetful you can be at times. QuestADay will allow you to keep a record of your completed quests as well as upload a photo of your victory. Keep an accurate log of your current progress and have a recordable history of all your accomplishments.</p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="http://i.imgur.com/RaxzC.jpg" src="http://i.imgur.com/RaxzC.jpg/140x140">
+          <h2>Motivation</h2>
+          <p> Completing quests will earn you points. Points will give you levels. Levels will unlock flair and badges. Flair and badges will get you bitches. </p>
+
+        </div><!-- /.span4 -->
+        
+       
+        
       </div><!-- /.row -->
 
 
@@ -418,6 +447,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}js/boostrap-carousel.js"></script>
     <script>
       !function ($) {
         $(function(){
