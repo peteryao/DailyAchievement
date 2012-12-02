@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-
-
 {% block style %} <style>
 
 .ribbon {
@@ -86,10 +84,6 @@
 </style> {% endblock %}
 
 {% block content %}
-
-
-
-
 <div class="row-fluid">
     <div class="row-fluid">
         <div class="span2 offset0">
@@ -112,18 +106,15 @@
             <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
             
             {% for quest in complete_quests %}
-            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><br>
-                <i>+
-                ({{quest.quest.point_value}}) points</i><br /><br><br>
+            <div>
+            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><p>
+                <i style="color:green" class="pull-right">+ {{quest.quest.point_value}} points</i></p>
+              </div><br />
             {% endfor %}
             <b><center>{{current_user.first_name}} {{current_user.last_name}} currently competing against: </center></b>
             <br><br>
             <center><img class="img-circle" src="http://placehold.it/140x140"></u> <b></b> <img class="img-circle" src="http://placehold.it/140x140"><br /><u></center>
-
-
         </div>
     </div>
-   
 </div>
-
 {% endblock %}

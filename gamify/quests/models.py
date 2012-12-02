@@ -82,8 +82,13 @@ class UserTrophy(models.Model):
     trophy = models.ForeignKey(Trophy)
 
 
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserAdditions.objects.create(user=instance)
+class Competition(models.Model):
+    user_one = models.FloatField()
+    user_two = models.FloatField()
 
-post_save.connect(create_user_profile, sender=User)
+
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserAdditions.objects.create(user=instance)
+
+# post_save.connect(create_user_profile, sender=User)
