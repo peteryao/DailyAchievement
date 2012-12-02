@@ -3,7 +3,11 @@
 {% block content %}
 <div class="row-fluid">
     {% for quest in quest %}
-    
+    <div class="span4">
+    <center><strong>{{quest.title}}</strong> ({{quest.point_value}}<i> pts</i>)</center><br />
+    <center><img src="{{quest.image}}" style="height: 300px;" ></img></center><br />
+    <p>{{quest.description}}</p>
+    </div>  
     {% endfor %}
 </div>
 {% endblock %}
