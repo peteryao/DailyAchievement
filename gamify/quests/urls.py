@@ -20,7 +20,8 @@ urlpatterns += patterns('quests.views',
 urlpatterns += patterns('quests.views',
     url(r'^user/auth_login/$', 'auth_login'),
     url(r'^user/logout/$', 'signout'),
-    url(r'^user/current/$', 'current_quest')
+    url(r'^user/current/$', 'current_quest'),
+    url(r'^user/quest/accept/(?P<quest_id>\d+)/$', 'add_quest'),
     )
 
 urlpatterns += patterns('quests.views', 

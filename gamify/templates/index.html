@@ -259,9 +259,6 @@
   </head>
 
   <body>
-
-
-
     <!-- NAVBAR
     ================================================== -->
     <!-- Wrap the .navbar in .container to center it on the page and provide easy way to target it with .navbar-wrapper. -->
@@ -284,7 +281,7 @@
                 {% if current_user.is_authenticated %}
                 <li class="nav-inverse dropdown pull-right" id="menu-user"><a href="#" data-toggle="dropdown" data-target="#menu-user" class="dropdown-toggle"><i class="icon-white icon-user"></i> <span class="text">{{current_user}}</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a title="" href="/quests/user/current/">My Games</a></li>
+                        <li><a title="" href="/quests/user/current/">My Quests</a></li>
                          <li class="nav-header"><h5>Groups</h5></li>
                         {% for group in groups %}
                         <li><a href="/quests/group/{{group.group.id}}/">{{group.group.name}}</a></li>

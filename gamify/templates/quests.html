@@ -17,7 +17,7 @@
                 </center><br />
                 <div class="row">
                     <center>
-                        <button class="btn btn-success">Accept</button>
+                        <a href="/quests/user/quest/accept/{{quest.id}}/"><button class="btn btn-success" {% if quest.id in user_quests %}disabled{% endif %}>Accept</button></a>
                         {# <button class="btn btn-danger">Decline</button> #}
                     </center>
                 </div><br><br>

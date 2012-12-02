@@ -49,10 +49,15 @@ def profile(request, user_id):
 
 def quest(request):
     quest = Quest.objects.all()
+    user_quests = []
+    for active_quest in ActiveQuest.objects.filter(user_id=request.user.id):
+        user_quests.append(active_quest.quest.id)
 
+    print user_quests
     user_groups = UserGroup.objects.filter(user_id=request.user.id)
     return render_to_response('quests.html', {
         'current_user': request.user,
+        'user_quests': user_quests,
         'groups': user_groups,
         "quest": quest,
         }, context_instance=RequestContext(request))
@@ -186,6 +191,15 @@ def current_quest(request):
         }, context_instance=RequestContext(request))
 
 
+def add_quest(request, quest_id):
+    quest = Quest.objects.get(pk=quest_id)
+    user = request.user
+
+    accept = ActiveQuest(quest=quest, user=user)
+    accept.save()
+    return HttpResponseRedirect('/quests/user/current/')
+
+
 def add_group(request):
     user = request.user
     user_groups = UserGroup.objects.filter(user_id=request.user.id)
@@ -200,6 +214,7 @@ def add_group(request):
         'groups': user_groups,
         'all_groups': zip(all_groups, members),
         }, context_instance=RequestContext(request))
+
 
 def new_group(request):
     name = request.POST['inputName']
