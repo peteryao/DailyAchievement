@@ -1,4 +1,4 @@
-from quests.models import Quest, CompleteQuest, Interest, UserInterests, UserAdditions, Rank, Flair, Achievement, Trophy, UserAchievement, UserTrophy, ActiveQuest, Competition
+from quests.models import Quest, CompleteQuest, Interest, UserInterests, UserAdditions, Rank, Flair, Achievement, Trophy, UserAchievement, UserTrophy, ActiveQuest, Competition, Group, UserGroup
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
 
@@ -54,6 +54,14 @@ class ActiveQuestAdmin(admin.ModelAdmin):
 class CompetitionAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_one', 'user_two')
 
+
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+
+class UserGroupAdmin(admin.ModelAdmin):
+    list_display = ('id', 'group', 'name')
+
 admin.site.register(LogEntry)
 admin.site.register(Quest, QuestAdmin)
 admin.site.register(CompleteQuest, CompleteQuestAdmin)
@@ -68,3 +76,5 @@ admin.site.register(UserAchievement, UserAchievementAdmin)
 admin.site.register(UserTrophy, UserTrophyAdmin)
 admin.site.register(ActiveQuest, ActiveQuestAdmin)
 admin.site.register(Competition, CompetitionAdmin)
+admin.site.reqister(Group, GroupAdmin)
+admin.site.register(UserGroup, UserGroupAdmin)

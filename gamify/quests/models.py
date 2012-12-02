@@ -87,6 +87,17 @@ class Competition(models.Model):
     user_two = models.FloatField()
 
 
+class Group(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class UserGroup(models.Model):
+    user = models.ForeignKey(User)
+    group = models.ForeignKey(Group)
+
+
+
+
 # def create_user_profile(sender, instance, created, **kwargs):
 #     if created:
 #         UserAdditions.objects.create(user=instance)
