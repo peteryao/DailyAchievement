@@ -202,4 +202,11 @@ def add_group(request):
         }, context_instance=RequestContext(request))
 
 def new_group(request):
-    print request.session['inputName']
+    name = request.POST['inputName']
+    description = request.POST['inputDescription']
+    avatar = request.POST['inputPicture']
+
+    group = Group(name=name, description=description, avatar=avatar)
+    group.save()
+
+    return HttpResponseRedirect('/quests/group/')
