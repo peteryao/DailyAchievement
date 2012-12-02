@@ -46,7 +46,13 @@ def quest(request):
         "quest": quest,
         }, context_instance=RequestContext(request))
 
+
 def group(request, group_id):
     group = Group.objects.get(pk=group_id)
     members = Group.objects.filter(pk=group_id)
-    
+
+    return render_to_response('group.html', {
+        "group": group,
+        "members": members,
+        }, context_instance=RequestContext(request))
+
