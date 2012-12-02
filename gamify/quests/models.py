@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class Flair(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.CharField(max_length=200)
+
+
 class Quest(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -16,6 +21,7 @@ class Quest(models.Model):
 class CompleteQuest(models.Model):
     user = models.ForeignKey(User)
     quest = models.ForeignKey(Quest)
+    image = models.CharField(max_length=200)
     completed = models.DateTimeField(auto_now_add=True)
 
 
@@ -37,6 +43,7 @@ class UserAdditions(models.Model):
     occupation = models.CharField(max_length=200)
     avatar = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
+    flair = models.ForeignKey(Flair)
 
 
 class Rank(models.Model):
@@ -44,18 +51,24 @@ class Rank(models.Model):
     experience_required = models.FloatField()
 
 
-class Flair(models.Model):
-    name = models.CharField(max_length=200)
-    image = models.CharField()
-
-
 class Achievement(models.Model):
     name = models.CharField(max_length=200)
-    image = models.CharField()
-    requirements = models.CharField()
+    image = models.CharField(max_length=200)
+    requirements = models.CharField(max_length=200)
+
+
+class UserAchievement(models.Model):
+    user = models.ForeignKey(User)
+    achievement = models.ForeignKey(Achievement)
+    date = models.DateTimeField(auto_now_add=True)
 
 
 class Trophy(models.Model):
     name = models.CharField(max_length=200)
-    image = models.CharField()
+    image = models.CharField(max_length=200)
     achievement = models.ForeignKey(Achievement)
+
+
+class UserTrophy(models.Model):
+    user = models.ForeignKey(User)
+    trophy = models.ForeignKey(Trophy)
