@@ -11,5 +11,6 @@ urlpatterns += patterns('quests.views',
     url(r'^open/$', 'quest'),
     url(r'^group/(?P<group_id>\d+)/$', 'group'),
     url(r'^leaderboard/$', 'leaderboard'),
+    url(r'^quest/(?P<quest_id>\d+)/$', 'quest_page'),
     # url(r'', ''), 
     )

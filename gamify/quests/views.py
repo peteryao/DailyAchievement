@@ -87,3 +87,8 @@ def leaderboard(request):
         "board": board,
         "quests": quests,
         }, context_instance=RequestContext(request))
+
+def quest_page(request):
+    return render_to_response('quest_page.html', {
+
+        }, context_instance=RequestContext(request))
