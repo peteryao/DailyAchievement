@@ -79,8 +79,8 @@ def group(request, group_id):
         }, context_instance=RequestContext(request))
 
 def leaderboard(request):
-    
-    
-    return render_to_response('leaderboard.html', {
+    board = UserAdditions.objects.order_by('-points')[0:20]
 
+    return render_to_response('leaderboard.html', {
+        "board": board
         }, context_instance=RequestContext(request))
