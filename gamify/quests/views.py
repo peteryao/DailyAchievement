@@ -224,10 +224,15 @@ def add_group(request):
     for group in all_groups:
         members.append(len(UserGroup.objects.filter(group_id=group.id)))
 
+    group_id = []
+    for group in user_groups:
+        group_id.append(group.id)
+
     return render_to_response('add_group.html', {
         "current_user": user,
         'groups': user_groups,
         'all_groups': zip(all_groups, members),
+        'group_id': group_id,
         }, context_instance=RequestContext(request))
 
 

@@ -15,7 +15,7 @@
                 </center><br />
                 <div class="row">
                     <center>
-                        <a href="/quests/user/group/join/{{group.id}}/"><button class="btn btn-success" {% if quest.id in user_quests %}disabled{% endif %}>Join</button></a>
+                        <a href="/quests/user/group/join/{{group.id}}/"><button class="btn btn-success" {% if group.id in group_id %}disabled{% endif %}>Join</button></a>
                         {# <button class="btn btn-danger">Decline</button> #}
                     </center>
                 </div><br><br>
