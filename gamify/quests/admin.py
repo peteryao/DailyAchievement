@@ -60,7 +60,7 @@ class GroupAdmin(admin.ModelAdmin):
 
 
 class UserGroupAdmin(admin.ModelAdmin):
-    list_display = ('id', 'group', 'name')
+    list_display = ('id', 'group', 'user')
 
 admin.site.register(LogEntry)
 admin.site.register(Quest, QuestAdmin)
