@@ -89,10 +89,10 @@
     <div class="row-fluid">
         <div class="span3 offset0">
             <img class="img-rounded" src="http://placehold.it/140x140"><br /><u>
-            <b>{{current_user.first_name}} {{current_user.last_name}} </u> </b> <br><img src="{{additions.flair.image}}" width="100"></img> <br /><b>
+            <h4><b>{{current_user.first_name}} {{current_user.last_name}} </u> </b></h4><img src="{{additions.flair.image}}" width="100"></img> <br /><b>
             {{additions.points}} </b><i><b>points</i></b>
               <div class="row-fluid">
-        <h4>Trophy Case</h4>
+        <h4><u>Trophy Case</u></h4>
         {% for trophy in trophy %}
             {{trophy.trophy.name}} {{trophy.trophy.achievement.name}} <br />
             <img src="{{trophy.trophy.image}}" width="100"></img> 
@@ -107,7 +107,9 @@
             <center><div class="ribbon offset1"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
             
             {% for quest in complete_quests %}
-            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><br>(<i>{{quest.quest.point_value}}</i>)<br /><br><br>
+            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><br>
+                <i>+
+                ({{quest.quest.point_value}}) points</i><br /><br><br>
             {% endfor %}
         </div>
     </div>
