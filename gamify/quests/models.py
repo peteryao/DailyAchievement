@@ -33,6 +33,12 @@ class Interest(models.Model):
         return self.name
 
 
+class ActiveQuest(models.Model):
+    user = models.ForeignKey(User)
+    quest = models.ForeignKey(Quest)
+    started = models.DateTimeField(auto_now_add=True)
+
+
 class UserInterests(models.Model):
     user = models.ForeignKey(User)
     interest = models.ForeignKey(Interest)
