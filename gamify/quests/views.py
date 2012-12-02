@@ -24,6 +24,7 @@ def profile(request, user_id):
         "complete_quests": complete_quests,
         "trophy": trophy,
         "additions": additions,
+        "exp_remain": float(((100 - additions.exp) / 100) * 100),
         }, context_instance=RequestContext(request))
 
 

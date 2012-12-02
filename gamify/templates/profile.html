@@ -101,10 +101,8 @@
         </div>
         <div class="span9">
             <div class="progress progress-striped active">
-                {% with total=(widthratio 60 100 100) %}
                 <div class="bar" style="width: {% widthratio additions.exp 100 100 %}%;">Level 7</div>
-                <div class="bar bar-warning" style="width: {{ 100 |add:-total}}%"></div>
-                {% endwith %}
+                <div class="bar bar-warning" style="width:{{exp_remain}}%"></div>
             </div>
             <center><div class="ribbon offset1"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
             
