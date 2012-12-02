@@ -87,7 +87,7 @@
 
 <div class="row-fluid">
     <div class="row-fluid">
-        <div class="span3 offset0">
+        <div class="span2 offset0">
             <img class="img-rounded" src="http://placehold.it/140x140"><br /><u>
             <h4><b>{{current_user.first_name}} {{current_user.last_name}} </u> </b></h4><img src="{{additions.flair.image}}" width="100"></img> <br /><b>
             {{additions.points}} </b><i><b>points</i></b>
@@ -99,18 +99,23 @@
         {% endfor %}
     </div>
         </div>
-        <div class="span9">
+        <div class="span10">
             <div class="progress progress-striped active">
                 <div class="bar" style="width: {% widthratio additions.exp 100 100 %}%;">Level 7</div>
                 <div class="bar bar-warning" style="width:{{exp_remain}}%"></div>
             </div>
-            <center><div class="ribbon offset1"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
+            <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
             
             {% for quest in complete_quests %}
             <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><br>
                 <i>+
                 ({{quest.quest.point_value}}) points</i><br /><br><br>
             {% endfor %}
+            <b><center>{{current_user.first_name}} {{current_user.last_name}} currently competing against: </center></b>
+            <br><br>
+            <center><img class="img-circle" src="http://placehold.it/140x140"></u> <b></b> <img class="img-circle" src="http://placehold.it/140x140"><br /><u></center>
+
+
         </div>
     </div>
    
