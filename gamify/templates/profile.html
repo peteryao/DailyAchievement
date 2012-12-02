@@ -4,13 +4,16 @@
 
 <div class="row-fluid">
     <div class="row-fluid">
-        <div class="span4">
-            <img class="img-rounded" src="http://placehold.it/140x140">
+        <div class="span3">
+            <img class="img-rounded" src="http://placehold.it/140x140"><br />
+            {{current_user.first_name}} {{current_user.last_name}}
+        </div>
+        <div class="span9">
+            {% for quest in complete_quests %}
+            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} (<i>{{quest.quest.point_value}}</i>)<br />
+            {% endfor %}
         </div>
     </div>
 </div>
-
-{{current_user}}
-{{user_interests}}
 
 {% endblock %}
