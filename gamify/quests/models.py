@@ -89,6 +89,8 @@ class Competition(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=200)
+    description = models.TextField()
+    avatar = models.CharField(max_length=200)
 
 
 class UserGroup(models.Model):

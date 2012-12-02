@@ -56,7 +56,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 
 
 class GroupAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'description', 'avatar')
 
 
 class UserGroupAdmin(admin.ModelAdmin):
