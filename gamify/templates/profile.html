@@ -81,6 +81,20 @@
    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
    }
 
+/*DARKEN*/
+.brighten img {
+  -webkit-filter: brightness(-65%);
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.brighten img:hover {
+  -webkit-filter: brightness(0%);
+}
+
 </style> {% endblock %}
 
 {% block content %}
@@ -103,17 +117,19 @@
                 <div class="bar" style="width: {% widthratio additions.exp 100 100 %}%;">Level 7</div>
                 <div class="bar bar-warning" style="width:{{exp_remain}}%"></div>
             </div>
-            <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br>    
-            
+            <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{current_user.first_name}} {{current_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br> 
             {% for quest in complete_quests %}
-            <div>
-            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><p>
-                <i style="color:green" class="pull-right">+ {{quest.quest.point_value}} points</i></p>
+            <div class="row" style="border:1px solid">
+            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><div class="pull-right">
+                <i style="color:green">+ {{quest.quest.point_value}} points</i></div>
               </div><br />
             {% endfor %}
             <b><center>{{current_user.first_name}} {{current_user.last_name}} currently competing against: </center></b>
             <br><br>
-            <center><img class="img-circle" src="http://placehold.it/140x140"></u> <b></b> <img class="img-circle" src="http://placehold.it/140x140"><br /><u></center>
+            {% for battle in battles %}
+            <div class="brighten pic span2 {% if forloop.first %}offset1{%endif%}"><center>{{battle.user.first_name}} {{battle.user.last_name}}<br />
+            <img class="img-circle" src="{{battle.avatar}}" style="height:140px"></img></center></div>
+            {% endfor %}
         </div>
     </div>
 </div>
