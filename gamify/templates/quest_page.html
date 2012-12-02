@@ -11,7 +11,7 @@
         </center><br />
         <div class="row">
         <center>
-            <button class="btn btn-success">Accept</button>
+            <a href="/quests/user/quest/accept/{{quest.id}}"><button class="btn btn-success">Accept</button></a>
             {# <button class="btn btn-danger">Decline</button> #}
         </center>
         </div><br><br>
@@ -36,12 +36,14 @@
             </thead>
             <tbody>
                 {% for person, additional in completed %}
+                <tr>
                 <td>{{person.completed}}</td>
                 <td>{{person.user.first_name}}</td>
                 <td>{{person.user.last_name}}</td>
                 <td><img src="{{additional.avatar}}" style="height:80px; width:80px"></img></td>
                 <td><img src="{{person.image}}" style="height:80px; width:80px"></img></td>
                 <td><button class="btn btn-warning">Challenge</button></td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>

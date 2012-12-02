@@ -175,6 +175,15 @@ def current_quest(request):
         else:
             foes.append(UserAdditions.objects.get(user_id=battle.user_one))
 
+    print additions.exp
+    print additions.rank.experience_required
+    blue_bar = additions.exp
+
+    blue_percent = blue_bar / (additions.rank.experience_required) * 100
+    yellow_percent = 100 - blue_percent
+
+    # next_rank = Rank.objects.get(pk=(additions.rank.id + 1)).experience_required
+
     user_groups = UserGroup.objects.filter(user_id=request.user.id)
     return render_to_response('current_quest.html', {
         'current_user': user,
@@ -185,9 +194,12 @@ def current_quest(request):
         "complete_quests": complete_quests,
         "trophy": trophy,
         "additions": additions,
-        "exp_remain": float(((100 - additions.exp) / 100) * 100),
+        "exp_remain": float(((additions.exp - additions.rank.experience_required) / 100) * 100),
         "battles": foes,
         'groups': user_groups,
+        # 'next_rank': next_rank,
+        'blue_percent': blue_percent,
+        'yellow_percent': yellow_percent,
         }, context_instance=RequestContext(request))
 
 
@@ -195,7 +207,10 @@ def add_quest(request, quest_id):
     quest = Quest.objects.get(pk=quest_id)
     user = request.user
 
-    accept = ActiveQuest(quest=quest, user=user)
+    print quest_id
+    print quest.id
+    print user.id
+    accept = ActiveQuest(quest_id=quest.id, user_id=user.id)
     accept.save()
     return HttpResponseRedirect('/quests/user/current/')
 
@@ -231,15 +246,28 @@ def finish_quest(request, quest_id):
     quest = Quest.objects.get(pk=quest_id)
     user = request.user
 
-    completed = CompleteQuest(user=user, quest=quest, image="")
+    completed = CompleteQuest(user_id=user.id, quest_id=quest.id, image="")
     active = ActiveQuest.objects.filter(user_id=user.id).get(quest_id=quest.id)
     additions = UserAdditions.objects.get(user_id=user.id)
 
     completed.save()
     active.delete()
-    additions.exp += quest.points * 100
-    additions.points += quest.points
+    additions.exp += quest.point_value
+    additions.points += quest.point_value
     additions.completed += 1
+
+    if(Rank.objects.get(pk=(additions.rank.id+1)).experience_required<additions.exp):
+        additions.rank = Rank.objects.get(pk=(additions.rank.id + 1))
+
+    additions.save()
+    return HttpResponseRedirect('/quests/user/current')
 
 
 def cancel_quest(request, quest_id):
+    quest = Quest.objects.get(pk=quest_id)
+    user = request.user
+
+    active = ActiveQuest.objects.filter(user_id=user.id).get(quest_id=quest.id)
+    active.delete()
+
+    return HttpResponseRedirect('/quests/user/current/')

@@ -48,6 +48,9 @@ class Rank(models.Model):
     name = models.CharField(max_length=200)
     experience_required = models.FloatField()
 
+    def __unicode__(self):
+        return self.name
+
 
 class UserAdditions(models.Model):
     user = models.OneToOneField(User)

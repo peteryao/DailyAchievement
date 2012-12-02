@@ -33,7 +33,7 @@
                     {% for user in board %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td><center><img src="{{user.avatar}}" style="height:80px;width:80px"></center></img></td>
+                        <td><center><a href="/quests/user/{{user.id}}/"><img src="{{user.avatar}}" style="height:80px;width:80px"></a></center></img></td>
                         <td>{{user.user.first_name}}</td>
                         <td>{{user.user.last_name}}</td>
                         <td>{{user.points}}</td>
