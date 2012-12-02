@@ -8,5 +8,6 @@ urlpatterns = patterns('quests.views',
 
 urlpatterns += patterns('quests.views',
     url(r'^user/(?P<user_id>\d+)/$', 'profile'),
+    url(r'^quests/$', 'quest'), 
     # url(r'', ''), 
     )

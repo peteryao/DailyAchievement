@@ -26,3 +26,10 @@ def profile(request, user_id):
         "additions": additions,
         }, context_instance=RequestContext(request))
 
+
+def quest(request):
+    quest = Quest.objects.all()
+
+    return render_to_response('quests.html', {
+        "quest": quest,
+        }, context_instance=RequestContext(request))
