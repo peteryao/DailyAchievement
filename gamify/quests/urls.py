@@ -6,6 +6,6 @@ urlpatterns = patterns('quests.views',
     url(r'^$', 'index'),
     )
 
-urlpatterns = patterns('quests.views',
+urlpatterns += patterns('quests.views',
     url(r'^user/(?P<user_id>\d+)/$', 'profile'),
     )
