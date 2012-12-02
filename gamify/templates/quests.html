@@ -4,22 +4,25 @@
 <div class="row-fluid">
     {% for quest in quest %}
         {% if forloop.counter0|divisibleby:"3" %}
-        <div class="row">
+        <div class="row" style="position:relative">
         {% endif %}
-            <div class="span4">
+            <div class="span4 well">
                 <center>
-                    <strong>{{quest.title}}</strong> ({{quest.point_value}}<i> pts)</i>
-                </center><br />
+                    <strong>{{quest.title}}<br /></strong> ({{quest.point_value}}<i> pts)</i>
+                </center>
                 <center>
-                    <img src="{{quest.image}}" style="height: 300px;" ></img>
+                    <a href="/quests/quest/{{quest.id}}/"><img src="{{quest.image}}" style="height: 300px;" ></img></a>
                 </center><br />
-                <p>{{quest.description}}</p>
-                <div>
+                <div class="row">
                     <center>
                         <button class="btn btn-success">Accept</button>
                         <button class="btn btn-danger">Decline</button>
                     </center>
-                </div>
+                </div><br><br>
+                <p>
+                {{quest.description}}
+                </p>
+
             </div>  
         {% if forloop.counter|divisibleby:"3" %}
         </div>
@@ -27,4 +30,12 @@
     {% endfor %}
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script>
+$('.well').css({
+    'height': $('.well').height() + 60
+});
+</script>
 {% endblock %}

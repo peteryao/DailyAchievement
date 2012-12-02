@@ -88,7 +88,16 @@ def leaderboard(request):
         "quests": quests,
         }, context_instance=RequestContext(request))
 
-def quest_page(request):
-    return render_to_response('quest_page.html', {
 
+def quest_page(request, quest_id):
+    quest = Quest.objects.get(pk=quest_id)
+    completed = CompleteQuest.objects.filter(quest_id=quest.id).order_by('-completed')
+    complete_append = []
+    for person in completed:
+        complete_append.append(UserAdditions.objects.get(user_id=person.id))
+
+    return render_to_response('quest_page.html', {
+        'current_user': request.user,
+        'quest': quest,
+        'completed': zip(completed, complete_append),
         }, context_instance=RequestContext(request))

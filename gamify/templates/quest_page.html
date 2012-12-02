@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="fluid-row">
+    <div class="span3">
+        <center>
+            <strong>{{quest.title}}<br /></strong> ({{quest.point_value}}<i> pts)</i>
+        </center>
+        <center>
+            <img src="{{quest.image}}" style="height: 300px;" ></img>
+        </center><br />
+        <div class="row">
+        <center>
+            <button class="btn btn-success">Accept</button>
+            <button class="btn btn-danger">Decline</button>
+        </center>
+        </div><br><br>
+        <p>
+        {{quest.description}}
+        </p>
+    </div>  
+    <div class="span8">
+        {% if completed|length == 0 %}
+        <center><h2>No one has finished, be the first!</h2></center>
+        {% else %}
+        <table class='table table-hover'>
+            <thead>
+                <tr>
+                    <th>Date Completed</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person, additional in completed %}
+                <td>{{person.completed}}</td>
+                <td>{{person.user.first_name}}</td>
+                <td>{{person.user.last_name}}</td>
+                <td><img src="{{additional.avatar}}" style="height:80px; width:80px"></img></td>
+                <td><img src="{{person.image}}" style="height:80px; width:80px"></img></td>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
