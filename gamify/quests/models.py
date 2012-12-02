@@ -22,6 +22,9 @@ class CompleteQuest(models.Model):
 class Interest(models.Model):
     name = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.name
+
 
 class UserInterests(models.Model):
     user = models.ForeignKey(User)
