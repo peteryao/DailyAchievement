@@ -78,3 +78,9 @@ def group(request, group_id):
         "average_points": average_points,
         }, context_instance=RequestContext(request))
 
+def leaderboard(request):
+    
+    
+    return render_to_response('leaderboard.html', {
+
+        }, context_instance=RequestContext(request))

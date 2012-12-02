@@ -8,22 +8,23 @@
     <div class="row">
         <center><img src="{{group.avatar}}"></img></center>
     </div>
+    <hr>
     <div class="row">
         <div class="span2 offset2">
-            {{members|length}} People
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">{{members|length}} People</button>
         </div>
         <div class="span2">
-            {{total_points}} Points
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">{{total_points}} Points</button>
         </div>
         <div class="span2">
-            {{average_points}} Average Points
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">{{average_points}} Average Points</button>
         </div>
         <div class="span2">
-            {{total_quests}} Total Quests
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">{{total_quests}} Total Quests</button>
         </div>
     </div>
     <div class="row">
-        <p><center>{{group.description}}</center></p>
+        <p><center><i><h4>{{group.description}}</h4></i></center></p>
     </div>
 
     <table class="table table-hover">
