@@ -42,7 +42,6 @@ venv/
 virv/
 gamify/db/data.sqlite
 
-*.sqlite
 
 gamify/db/data.sqlite
 
