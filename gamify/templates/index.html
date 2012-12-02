@@ -271,40 +271,40 @@
       <div class="navbar navbar-inverse">
         <div class="navbar-inner">
           <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <a class="brand" href="#">Select A Quest</a>
           <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/quests/open/">Quests</a></li>
+              <li><a href="/quests/leaderboard/">LeaderBoard</a></li>
+              <li><a href="/quests/leaderboard/">About</a></li>
               <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-              <li class="dropdown">
-
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li class="active"><a href="#home">Home</a></li>
-                  <li><a href="#Actions">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
             </ul>
           </div><!--/.nav-collapse -->
-          <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
+            <ul class="nav nav-inverse pull-right">
+                {% if current_user.is_authenticated %}
+                <li class="nav-inverse dropdown pull-right" id="menu-user"><a href="#" data-toggle="dropdown" data-target="#menu-user" class="dropdown-toggle"><i class="icon-white icon-user"></i> <span class="text">{{current_user}}</span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a title="" href="/quests/user/current/">My Games</a></li>
+                         <li class="nav-header"><h5>Groups</h5></li>
+                        {% for group in groups %}
+                        <li><a href="/quests/group/{{group.group.id}}/">{{group.group.name}}</a></li>
+                        {% endfor %}
+                        <li><a href="/quests/group/new/"><i class="icon icon-plus-sign"></i> Add Group</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                <li class="nav nav-inverse">
+                    {% if current_user.is_authenticated %}
+                    <a title="" href="/quests/user/logout/"><i class="icon-white icon-share-alt"></i> <span class="text">Logout</span></a>
+                    {% else %}
+             <form class="navbar-form pull-right" action="/quests/user/auth_login/" method="POST">
+              {% csrf_token %}
+              <input class="span2" type="text" name="inputName" placeholder="Username">
+              <input  class="span2" type="password" name="inputPass" placeholder="Password">
               <button type="submit" class="btn">Sign in</button>
-          </form>
+              </form>
+                    {% endif %}
         </div><!-- /.navbar-inner -->
       </div><!-- /.navbar -->
 
@@ -427,6 +427,7 @@
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
       <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>  
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
     <script>
       !function ($) {
         $(function(){

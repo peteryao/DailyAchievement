@@ -95,21 +95,15 @@
   -webkit-filter: brightness(0%);
 }
 
-</style> {% endblock %}
+</style> 
+{% endblock %}
 
 {% block content %}
 <div class="row-fluid">
     <div class="row-fluid">
         <div class="span2 offset0">
-            <img class="img-rounded" src="{{additions.avatar}}"><br /><u>
-            <h4><b>{{profile_user.first_name}} {{profile_user.last_name}} </u> </b></h4><img src="{{additions.flair.image}}" width="100"></img> <br /><b>
-            {{additions.points}} </b><i><b>points</i></b>
+            <img class="img-rounded pull-left" src="{{additions.avatar}}"><br />
               <div class="row-fluid">
-        <h4><u>Trophy Case</u></h4>
-        {% for trophy in trophy %}
-            {{trophy.trophy.name}} {{trophy.trophy.achievement.name}} <br />
-            <img src="{{trophy.trophy.image}}" width="100"></img> 
-        {% endfor %}
     </div>
         </div>
         <div class="span10">
@@ -117,18 +111,33 @@
                 <div class="bar" style="width: {% widthratio additions.exp 100 100 %}%;">Level 7</div>
                 <div class="bar bar-warning" style="width:{{exp_remain}}%"></div>
             </div>
-            <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{profile_user.first_name}} {{profile_user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br> 
-            {% for quest in complete_quests %}
-            <div class="row" style=" padding-left:30px">
-            <strong>{{quest.quest.title}}</strong>: {{quest.quest.description}} <br><div class="pull-right">
-                <i style="color:green">+ {{quest.quest.point_value}} points</i></div>
-              </div><br />
-            {% endfor %}
-            <b><center>{{profile_user.first_name}} {{profile_user.last_name}} currently competing against: </center></b>
-            <br><br>
+            <center><div class="ribbon offset2"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Overview for {{user.first_name}} {{user.last_name}}</h1></strong><div class="ribbon-stitches-bottom"></div></div><br><br><br></center><br><br><br> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date Started</th>
+                        <th style="width:200">Quest</th>
+                        <th style="width:250">Description</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for quest in active_quests %}
+                    <tr>
+                        <td>{{quest.started}}</td>
+                        <td>{{quest.quest}}</td>
+                        <td>{{quest.quest.description}}</td>
+                        <td><button class="btn-success"><i class="icon-ok-circle"></i> Finish</a></td>
+                        <td><button class="btn-danger"><i class="icon-remove"></i> Cancel</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <b><center>{{user.first_name}} {{user.last_name}} currently competing against: </center></b>
             {% for battle in battles %}
-            <div class="brighten pic span2 {% if forloop.first %}offset1{%endif%}"><center>{{battle.user.first_name}} {{battle.user.last_name}}<br />
-            <img class="img-circle" src="{{battle.avatar}}" style="height:140px"></img></center></div>
+            <div class="brighten pic span2 {% if forloop.first %}   {%endif%}"><center>{{battle.user.first_name}} {{battle.user.last_name}}<br />
+            <a href="/quests/user/{{battle.user.id}}/"><img class="img-circle" src="{{battle.avatar}}" style="height:140px"></img></a></center></div>
             {% endfor %}
         </div>
     </div>

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block quest %}class="active"{% endblock %}
+
 {% block content %}
 <div class="row-fluid">
     {% for quest in quest %}
@@ -16,7 +18,7 @@
                 <div class="row">
                     <center>
                         <button class="btn btn-success">Accept</button>
-                        <button class="btn btn-danger">Decline</button>
+                        {# <button class="btn btn-danger">Decline</button> #}
                     </center>
                 </div><br><br>
                 <p>

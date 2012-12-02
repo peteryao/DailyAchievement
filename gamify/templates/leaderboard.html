@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block leaderboard %}class="active"{% endblock %}
+
 {% block content %}
 <div class="row-fluid">
     <div class="row">
@@ -9,7 +11,7 @@
         <div class="span2">
             {% for quest in quests %}
             <div>
-            <a href="/quests/open/"><img src="{{quest.image}}"></img></a>
+            <a href="/quests/quest/{{quest.id}}/"><img src="{{quest.image}}"></img></a>
             </div>
             <hr>
             {% endfor %}
@@ -18,7 +20,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Rank</th>
+                        <th style="width:10px">Rank</th>
                         <th style="width:200px"></th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -31,7 +33,7 @@
                     {% for user in board %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td><center><img src="{{user.avatar}}" style="height:140px"></center></img></td>
+                        <td><center><img src="{{user.avatar}}" style="height:80px;width:80px"></center></img></td>
                         <td>{{user.user.first_name}}</td>
                         <td>{{user.user.last_name}}</td>
                         <td>{{user.points}}</td>
