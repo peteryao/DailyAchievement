@@ -20,7 +20,7 @@ class UserInterestAdmin(admin.ModelAdmin):
 
 
 class UserAdditionsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'exp', 'points', 'occupation', 'avatar', 'location', 'flair')
+    list_display = ('user', 'exp', 'points', 'completed', 'occupation', 'avatar', 'location', 'rank', 'flair')
 
 
 class RankAdmin(admin.ModelAdmin):

@@ -49,10 +49,32 @@ def quest(request):
 
 def group(request, group_id):
     group = Group.objects.get(pk=group_id)
-    members = Group.objects.filter(pk=group_id)
+    members = []
+    for member in UserGroup.objects.filter(group_id=group_id):
+        members.append(member.user)
+
+    total_points = 0
+    total_quests = 0
+    average_points = 0
+    for member in members:
+        total_points += member.get_profile().points
+
+    average_points = (total_points / len(members))
+
+    for member in members:
+        total_quests += len(CompleteQuest.objects.filter(user_id=member.id))
+
+    data = sorted(members, key=lambda user: -user.get_profile().points)
+    print data
+    sort = []
+    for i in data:
+        sort.append(UserAdditions.objects.get(user_id=i.id))
 
     return render_to_response('group.html', {
         "group": group,
-        "members": members,
+        "members": sort,
+        "total_points": total_points, 
+        "total_quests": total_quests,
+        "average_points": average_points,
         }, context_instance=RequestContext(request))
 

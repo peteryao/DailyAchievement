@@ -44,6 +44,11 @@ class UserInterests(models.Model):
     interest = models.ForeignKey(Interest)
 
 
+class Rank(models.Model):
+    name = models.CharField(max_length=200)
+    experience_required = models.FloatField()
+
+
 class UserAdditions(models.Model):
     user = models.OneToOneField(User)
     exp = models.FloatField()
@@ -51,12 +56,9 @@ class UserAdditions(models.Model):
     occupation = models.CharField(max_length=200)
     avatar = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
+    completed = models.FloatField()
     flair = models.ForeignKey(Flair)
-
-
-class Rank(models.Model):
-    name = models.CharField(max_length=200)
-    experience_required = models.FloatField()
+    rank = models.ForeignKey(Rank)
 
 
 class Achievement(models.Model):
