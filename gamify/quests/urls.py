@@ -10,10 +10,10 @@ urlpatterns += patterns('quests.views',
     url(r'^user/(?P<user_id>\d+)/$', 'profile'),
     url(r'^open/$', 'quest'),
     url(r'^group/(?P<group_id>\d+)/$', 'group'),
-    # url(r'^group/add_group/$', 'add_group'),
+    url(r'^group/new/$', 'add_group'),
     url(r'^leaderboard/$', 'leaderboard'),
     url(r'^quest/(?P<quest_id>\d+)/$', 'quest_page'),
-    url(r'^about/$', 'about')
+    url(r'^about/$', 'about'),
     # url(r'', ''), 
     )
 
@@ -21,4 +21,8 @@ urlpatterns += patterns('quests.views',
     url(r'^user/auth_login/$', 'auth_login'),
     url(r'^user/logout/$', 'signout'),
     url(r'^user/current/$', 'current_quest')
+    )
+
+urlpatterns += patterns('quests.views', 
+    url(r'^group/add_group/$', 'new_group'),
     )

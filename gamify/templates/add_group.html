@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th>Group</th>
+            <th></th>
+            <th>Description</th>
+            <th>Members</th>
+            <th>Join</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for group, count in all_groups %}
+        <tr>
+            <td><img src="{{group.avatar}}" style="height:80px;width:80px"></img></td>
+            <td>{{group.name}}</td>
+            <td>{{group.description}}</td>
+            <td>{{count}}</td>
+            <td><a href="/quests/group/{{group.group.id}}"> <button class="btn btn-success">Join</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+Looking for something not on this list? Make you own group and invite your friends!
+<form action="/quests/group/add_group/" method="POST">
+    {% csrf_token %}
+<div class="control-group">
+  <label class="control-label" for="inpueName">Group Name</label>
+    <div class="controls">
+      <input type="text" id="inputName" placeholder="Email">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Group Description</label>
+    <div class="controls">
+      <input id="inputDescription" placeholder="Descripton">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPicture">Picture</label>
+    <div class="controls">
+      <input id="inputPicture" placeholder="Picture">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Make New Team</button> 
+</form>
+{% endblock %}

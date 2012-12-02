@@ -184,3 +184,22 @@ def current_quest(request):
         "battles": foes,
         'groups': user_groups,
         }, context_instance=RequestContext(request))
+
+
+def add_group(request):
+    user = request.user
+    user_groups = UserGroup.objects.filter(user_id=request.user.id)
+
+    all_groups = Group.objects.all()
+    members = []
+    for group in all_groups:
+        members.append(len(UserGroup.objects.filter(group_id=group.id)))
+
+    return render_to_response('add_group.html', {
+        "current_user": user,
+        'groups': user_groups,
+        'all_groups': zip(all_groups, members),
+        }, context_instance=RequestContext(request))
+
+def new_group(request):
+    print request.session['inputName']
