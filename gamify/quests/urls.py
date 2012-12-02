@@ -22,6 +22,9 @@ urlpatterns += patterns('quests.views',
     url(r'^user/logout/$', 'signout'),
     url(r'^user/current/$', 'current_quest'),
     url(r'^user/quest/accept/(?P<quest_id>\d+)/$', 'add_quest'),
+    url(r'^user/quest/finish/(?P<quest_id>\d+)/$', 'finish_quest'),
+    url(r'^user/quest/cancel/(?P<quest_id>\d+)/$', 'cancel_quest'),
+
     )
 
 urlpatterns += patterns('quests.views', 

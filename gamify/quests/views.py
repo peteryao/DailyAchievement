@@ -225,3 +225,21 @@ def new_group(request):
     group.save()
 
     return HttpResponseRedirect('/quests/group/')
+
+
+def finish_quest(request, quest_id):
+    quest = Quest.objects.get(pk=quest_id)
+    user = request.user
+
+    completed = CompleteQuest(user=user, quest=quest, image="")
+    active = ActiveQuest.objects.filter(user_id=user.id).get(quest_id=quest.id)
+    additions = UserAdditions.objects.get(user_id=user.id)
+
+    completed.save()
+    active.delete()
+    additions.exp += quest.points * 100
+    additions.points += quest.points
+    additions.completed += 1
+
+
+def cancel_quest(request, quest_id):
