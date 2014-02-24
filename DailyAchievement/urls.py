@@ -1,19 +1,12 @@
-from django.conf.urls import *
-from gamify.models import *
-from django.contrib import admin
-from django.conf import settings
+from django.conf.urls import patterns, include, url
 
+from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^', include('gamify.urls')),
+    # Examples:
+    # url(r'^$', 'DailyAchievement.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+
     url(r'^admin/', include(admin.site.urls)),
 )
-
-#To handle static html problems
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
